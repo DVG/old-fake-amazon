@@ -1,0 +1,27 @@
+- for product in @products
+  div.row
+    div.col-md-3
+      div.thumbnail
+        / Good god it's been a long time since I messed with Rails views, can't get asset paths to play nice
+        = image_tag "/assets/#{product.product_images.first.image_url}"
+    div.col-md-9
+      div.row
+        div.col-md-12
+          h1 = product.name
+      div.row
+        div.col-md-3
+          strong List Price
+        div.col-md-9
+          span.strikethrough
+            = number_to_currency product.list_price
+      div.row
+        div.col-md-3
+          strong Price
+        div.col-md-9
+          = number_to_currency product.price
+      div.row
+        div.col-md-3
+          strong You Save
+        div.col-md-9
+          = number_to_currency product.list_price_difference
+          = " (#{product.percentage_saved}%)"

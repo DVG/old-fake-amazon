@@ -1,0 +1,9 @@
+div.row
+  div.col-md-12
+    h2 Log In
+    = simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+      = f.input :email
+      = f.input :password
+      = f.input :remember_me, as: :boolean
+      = f.button :submit, class: "btn-primary"
+    = render "devise/shared/links"

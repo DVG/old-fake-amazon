@@ -11,8 +11,11 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'devise'
 gem 'simple_form'
+gem 'carrierwave'
+gem 'rmagick'
 
 group :development, :test do
+  gem 'annotate', '~> 2.6.6'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'

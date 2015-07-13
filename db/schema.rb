@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20150712185657) do
 
   create_table "product_images", force: :cascade do |t|
     t.integer  "product_id"
-    t.string   "image_url"
+    t.string   "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -7,7 +7,7 @@ html
     = csrf_meta_tags
   body
     #container.container-fluid
-      nav.navbar.navbar-default role="navigation"
+      nav.navbar role="navigation"
         .container-fluid
           .navbar-header
             = link_to "Fake Amazon", root_path, class: "navbar-brand"
@@ -16,8 +16,24 @@ html
               li
                 = link_to "My Fake Amazon", products_path
             ul.nav.navbar-nav.navbar-right
+              li.dropdown
+                a.dropdown-toggle href="#" data-toggle="dropdown"
+                  -if current_user
+                    | Hello, #{current_user.username}
+                  - else
+                    | Hello! Access Your Account
+                  span.caret
+                ul.dropdown-menu
+                  - if current_user
+                    li
+                      = link_to "Sign Out", destroy_user_session_path, method: :delete
+                  - else
+                    li
+                      = link_to "Sign In", new_user_session_path
+                    li
+                      = link_to "Register", new_user_registration_path
               li
-                = link_to "#"
-                  i.fa.fa-2x.fa-shopping-cart
+                = link_to carts_path
+                  i.fa.fa-2x.fa-shopping-cart.notification-badge data-badge="#{current_user.try(:cart).try(:total_items)}"
       = flash_messages
       = yield

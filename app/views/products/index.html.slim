@@ -2,12 +2,11 @@
   div.row
     div.col-md-3
       div.thumbnail
-        / Good god it's been a long time since I messed with Rails views, can't get asset paths to play nice
-        = image_tag "/assets/#{product.product_images.first.image_url}"
+        = image_tag product.product_images.first.image_url
     div.col-md-9
       div.row
         div.col-md-12
-          h1 = product.name
+          h1 = link_to product.name, product
       div.row
         div.col-sm-3
           strong List Price

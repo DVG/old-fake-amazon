@@ -1,0 +1,20 @@
+div.row
+  div.col-md-12
+    h2 Items in your Cart
+
+div.row
+  div.col-md-12
+    table.table.table-striped
+      thead
+        tr
+          th Product
+          th Price
+          th Quantity
+
+      tbody
+        - for line_item in @cart.line_items
+          tr
+            td = line_item.product.name
+            td 
+              = number_to_currency line_item.product.list_price
+            td = line_item.quantity

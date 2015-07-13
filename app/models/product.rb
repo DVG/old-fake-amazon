@@ -1,5 +1,7 @@
 class Product < ActiveRecord::Base
+  belongs_to :category
   has_many :product_images
+  validates :category, presence: true
 
   def list_price_difference
     list_price - price

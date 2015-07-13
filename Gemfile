@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.1'
-gem 'pg'
+gem 'sqlite3'
 gem 'slim'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem "font-awesome-rails"

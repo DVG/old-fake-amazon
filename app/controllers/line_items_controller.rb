@@ -10,6 +10,12 @@ class LineItemsController < ApplicationController
     redirect_to root_path, notice: "#{@line_item.product.name} added to your cart!"
   end
 
+  def destroy
+    @line_item = LineItem.find(params[:id])
+    @line_item.destroy
+    redirect_to current_user.cart
+  end
+
 private
   
   def line_item_params

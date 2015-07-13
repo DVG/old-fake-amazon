@@ -1,6 +1,6 @@
 include ActionView::Helpers
 
-def upload_image(image_name, product: product)
+def upload_image(image_name, product: nil)
   product.product_images.find_or_create_by(image: File.open("db/seeds/images/#{image_name}"))
 end
 

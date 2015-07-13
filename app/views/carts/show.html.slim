@@ -10,11 +10,13 @@ div.row
           th Product
           th Price
           th Quantity
+          th Actions
 
       tbody
         - for line_item in @cart.line_items
           tr
-            td = line_item.product.name
+            td = link_to line_item.product.name, line_item.product
             td 
               = number_to_currency line_item.product.list_price
             td = line_item.quantity
+            td = link_to "Remove", line_item, method: :delete, class: "btn btn-xs btn-danger"

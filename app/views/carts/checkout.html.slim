@@ -1,1 +1,44 @@
-| Checkout
+div.row
+  div.col-md-9
+    div.row
+      div.col-sm-5
+        h4 Step 1: Shipping Address
+      div.col-sm-7
+        | Form for Shipping
+    hr
+    div.row
+      div.col-sm-5
+        h4 Step 2: Payment Method
+      div.col-sm-7
+        | Form for Payment
+    hr
+    div.row
+      div.col-sm-5
+        h4 Step 3: Review items and shipping
+      div.col-sm-7
+        | Shipping Details
+
+  div.col-md-3
+    div.well
+      div.row
+        div.col-xs-12
+          a href="#" class="btn btn-primary btn-block" Place Your Order
+      div.row
+        div.col-xs-12
+          small.text-center
+            br
+            p
+              | By placing your order you agree to Fake Amazon's
+              br
+              | privacy notice and conditions of use.
+      div.row
+        div.col-xs-12
+          h4 Order Summary
+      div.row
+        div.col-xs-12
+          | Items: #{number_to_currency @cart.subtotal}
+          br
+          | Shipping and Handling: #{ number_to_currency 0}
+          hr
+          strong Total:  
+          = number_to_currency @cart.subtotal

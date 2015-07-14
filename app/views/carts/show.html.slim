@@ -3,10 +3,11 @@ div.row
     h2 Items in your Cart
 
 div.row
-  div.col-md-12
+  div.col-md-9
     table.table.table-striped
       thead
         tr
+          th Image
           th Product
           th Price
           th Quantity
@@ -15,8 +16,18 @@ div.row
       tbody
         - for line_item in @cart.line_items
           tr
+            td = image_tag line_item.product.product_images.first.image_url(:small)
             td = link_to line_item.product.name, line_item.product
             td 
               = number_to_currency line_item.product.list_price
             td = line_item.quantity
             td = link_to "Remove", line_item, method: :delete, class: "btn btn-xs btn-danger"
+
+  div.col-md-3
+    div.well
+      div.row
+        div.col-xs-12
+          h4 Subtotal: #{ number_to_currency @cart.subtotal }
+      div.row
+        div.col-xs-12
+          = link_to "Proceed to Checkout", checkout_cart_path(@cart), class: "btn btn-primary btn-block"

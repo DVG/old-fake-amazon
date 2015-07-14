@@ -12,4 +12,8 @@ module ApplicationHelper
       end
       nil
     end
+
+    def cart_items
+      current_user.try(:cart).try(:total_items)
+    end
 end

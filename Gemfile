@@ -23,6 +23,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'spring-commands-rspec'
   gem 'spring-commands-cucumber'
+  gem 'watir-webdriver'
+  gem 'selenium-webdriver'
 end
 
 group :test do

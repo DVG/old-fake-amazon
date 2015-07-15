@@ -1,0 +1,29 @@
+.form-group.card-number {
+  .form-control-feedback {
+    background-image: url('<%= image_path "credit.png" %>');
+    background-repeat: no-repeat;
+    background-size: 35px 25px;
+    position: absolute;
+    top: 30px;
+    right: 15px;
+    display: block;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .visa + .form-control-feedback {
+    background-image: url('<%= image_path "visa.png" %>');
+  }
+
+  .mastercard + .form-control-feedback {
+    background-image: url('<%= image_path "mastercard.png" %>');
+  }
+
+  .amex + .form-control-feedback {
+    background-image: url('<%= image_path "amex.png" %>');
+  }
+
+  .discover + .form-control-feedback {
+    background-image: url('<%= image_path "discover.png" %>');
+  }
+}

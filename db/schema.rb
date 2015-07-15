@@ -41,11 +41,10 @@ ActiveRecord::Schema.define(version: 20150715021436) do
   create_table "payment_methods", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "card_number"
-    t.string   "expiration_month"
-    t.string   "expiration_year"
+    t.string   "expiration"
     t.string   "security_code"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_index "payment_methods", ["user_id"], name: "index_payment_methods_on_user_id"

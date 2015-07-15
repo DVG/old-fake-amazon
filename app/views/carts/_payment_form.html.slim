@@ -1,14 +1,15 @@
 = simple_form_for PaymentMethod.new, remote: true do |f|
   div.row
     div.col-xs-12
-      = f.input :card_number
+      div.form-group.has-feedback.card-number
+        = f.label :card_number
+        = f.text_field :card_number, class: "js-card-number card-number form-control", placeholder: "•••• •••• •••• ••••"
+        span.form-control-feedback
   div.row
-    div.col-xs-4
-      = f.input :expiration_month, collection: 1..12
-    div.col-xs-4
-      = f.input :expiration_year, collection: 2015..2030
-    div.col-xs-4
-      = f.input :security_code
+    div.col-xs-6
+      = f.input :expiration, input_html: { class: "js-expiration" }, placeholder: "••/••"
+    div.col-xs-6
+      = f.input :security_code, input_html: { class: "js-cvc" }, placeholder: "••••"
   div.row
     div.col-xs-8
     div.col-xs-4

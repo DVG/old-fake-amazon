@@ -1,9 +1,13 @@
 div.row
-  div.col-md-12
+  div.col-md-3
+  div.col-md-6
     h2 Log In
     = simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f|
       = f.input :email
       = f.input :password
-      = f.input :remember_me, as: :boolean
-      = f.button :submit, class: "btn-primary"
+      div.form-group
+        = f.check_box :remember_me
+        |  Remeber me
+      = f.button :submit, "Sign in using our secure server", class: "btn-primary"
     = render "devise/shared/links"
+  div.col-md-3

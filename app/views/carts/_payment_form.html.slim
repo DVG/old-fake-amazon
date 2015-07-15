@@ -1,6 +1,9 @@
 = simple_form_for PaymentMethod.new, remote: true do |f|
   div.row
     div.col-xs-12
+      = f.input :name_on_card
+  div.row
+    div.col-xs-12
       div.form-group.has-feedback.card-number
         = f.label :card_number
         = f.text_field :card_number, class: "js-card-number card-number form-control", placeholder: "•••• •••• •••• ••••"

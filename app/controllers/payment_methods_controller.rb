@@ -7,6 +7,6 @@ class PaymentMethodsController < ApplicationController
 private
 
   def payment_method_params
-    params.require(:payment_method).permit(:card_number, :expiration_month, :expiration_year, :security_code)
+    params.require(:payment_method).permit(:name_on_card, :card_number, :expiration, :security_code)
   end
 end

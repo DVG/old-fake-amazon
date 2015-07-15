@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20150715021436) do
 
   create_table "payment_methods", force: :cascade do |t|
     t.integer  "user_id"
+    t.string   "name_on_card"
     t.string   "card_number"
     t.string   "expiration"
     t.string   "security_code"

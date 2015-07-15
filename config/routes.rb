@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     end
   end
   resources :line_items
+  resources :shipping_addresses
+  resources :payment_methods
   root to: "products#index"
 end

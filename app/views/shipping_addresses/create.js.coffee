@@ -1,0 +1,1 @@
+$("#shipping_address_section").html("<%= j render'carts/shipping_address', address: @shipping_address %>")

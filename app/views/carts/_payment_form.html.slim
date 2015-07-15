@@ -1,0 +1,15 @@
+= simple_form_for PaymentMethod.new, remote: true do |f|
+  div.row
+    div.col-xs-12
+      = f.input :card_number
+  div.row
+    div.col-xs-4
+      = f.input :expiration_month, collection: 1..12
+    div.col-xs-4
+      = f.input :expiration_year, collection: 2015..2030
+    div.col-xs-4
+      = f.input :security_code
+  div.row
+    div.col-xs-8
+    div.col-xs-4
+      = f.submit "Add Payment Method", class: "btn btn-primary", disable_with: please_with_with_spinner

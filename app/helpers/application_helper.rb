@@ -16,4 +16,8 @@ module ApplicationHelper
     def cart_items
       current_user.try(:cart).try(:total_items)
     end
+
+    def please_with_with_spinner
+      content_tag :i, class: "fa fa-spinner fa-spin"
+    end
 end

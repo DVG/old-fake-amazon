@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150712185657) do
+ActiveRecord::Schema.define(version: 20150715021436) do
 
   create_table "carts", force: :cascade do |t|
     t.integer  "user_id"
@@ -38,6 +38,18 @@ ActiveRecord::Schema.define(version: 20150712185657) do
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id"
 
+  create_table "payment_methods", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "card_number"
+    t.string   "expiration_month"
+    t.string   "expiration_year"
+    t.string   "security_code"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "payment_methods", ["user_id"], name: "index_payment_methods_on_user_id"
+
   create_table "product_images", force: :cascade do |t|
     t.integer  "product_id"
     t.string   "image"
@@ -52,6 +64,27 @@ ActiveRecord::Schema.define(version: 20150712185657) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "category_id"
+  end
+
+  create_table "shipping_addresses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "addressee"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state_code"
+    t.string   "zip_code"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "shipping_addresses", ["user_id"], name: "index_shipping_addresses_on_user_id"
+
+  create_table "shipping_methods", id: false, force: :cascade do |t|
+    t.integer  "id"
+    t.string   "name"
+    t.decimal  "price_per_item", precision: 8, scale: 2
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   create_table "users", force: :cascade do |t|

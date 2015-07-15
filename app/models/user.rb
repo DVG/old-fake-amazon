@@ -14,6 +14,7 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string
 #  last_sign_in_ip        :string
+#  prime_member           :boolean
 #  created_at             :datetime
 #  updated_at             :datetime
 #
@@ -25,6 +26,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :cart
+  has_many :shipping_addresses
+  has_many :payment_methods
 
   after_create :generate_cart
 

@@ -1,0 +1,18 @@
+= simple_form_for ShippingAddress.new, remote: true do |f|
+  div.row
+    div.col-xs-12
+      = f.input :addressee
+  div.row
+    div.col-xs-12
+      = f.input :street_address
+  div.row
+    div.col-xs-6
+      = f.input :city
+    div.col-xs-3
+      = f.input :state_code, collection: ShippingAddress::STATE_CODES
+    div.col-xs-3
+      = f.input :zip_code
+  div.row
+    div.col-xs-8
+    div.col-xs-4
+      = f.submit "Ship to this address", class: "btn btn-primary", disable_with: please_with_with_spinner

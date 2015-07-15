@@ -1,0 +1,1 @@
+$("#payment_method_section").html("<%= j render'carts/payment_method', payment_method: @payment_method %>")

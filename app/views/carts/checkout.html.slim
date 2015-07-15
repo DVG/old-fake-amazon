@@ -4,19 +4,29 @@ div.row
       div.col-sm-5
         h4 Step 1: Shipping Address
       div.col-sm-7
-        | Form for Shipping
+        div#shipping_address_section
+          - if current_user.shipping_addresses.any?
+            = render "shipping_address", address: current_user.shipping_addresses.first
+          - else
+            = render "shipping_form"
     hr
     div.row
       div.col-sm-5
         h4 Step 2: Payment Method
       div.col-sm-7
-        | Form for Payment
+        div#payment_method_section
+          - if current_user.payment_methods.any?
+            = render "payment_method", payment_method: current_user.payment_methods.first
+          - else
+            = render "payment_form"
     hr
     div.row
       div.col-sm-5
         h4 Step 3: Review items and shipping
       div.col-sm-7
-        | Shipping Details
+        - @cart.line_items.each do |line_item|
+          = line_item.product.name
+          br
 
   div.col-md-3
     div.well

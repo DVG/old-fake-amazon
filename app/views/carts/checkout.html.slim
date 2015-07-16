@@ -1,32 +1,55 @@
 div.row
   div.col-md-9
     div.row
-      div.col-sm-5
-        h4 Step 1: Shipping Address
-      div.col-sm-7
-        div#shipping_address_section
-          - if current_user.shipping_addresses.any?
-            = render "shipping_address", address: current_user.shipping_addresses.first
-          - else
-            = render "shipping_form"
-    hr
+      div.col-md-12
+        div.panel.panel-default
+          div.panel-heading
+            h3.panel-title Select Address
+          div.panel-body
+            div#shipping_address_section
+              - if current_user.shipping_addresses.any?
+                = render "shipping_address", address: current_user.shipping_addresses.first
+              - else
+                = render "shipping_form"
+
     div.row
-      div.col-sm-5
-        h4 Step 2: Payment Method
-      div.col-sm-7
-        div#payment_method_section
-          - if current_user.payment_methods.any?
-            = render "payment_method", payment_method: current_user.payment_methods.first
-          - else
-            = render "payment_form"
-    hr
+      div.col-md-12
+        div.panel.panel-default
+          div.panel-heading
+            h3.panel-title Select Payment Method
+          div.panel-body
+            div#payment_method_section
+              - if current_user.payment_methods.any?
+                = render "payment_method", payment_method: current_user.payment_methods.first
+              - else
+                = render "payment_form"
     div.row
-      div.col-sm-5
-        h4 Step 3: Review items and shipping
-      div.col-sm-7
-        - @cart.line_items.each do |line_item|
-          = line_item.product.name
-          br
+      div.col-md-12
+        = simple_form_for Order.new do |f|
+          div.panel.panel-default
+            div.panel-heading
+              h3.panel-title Review Shipping and Items
+            div.panel-body
+              div.col-md-6
+                - @cart.line_items.each do |line_item|
+                  = simple_fields_for OrderLineItem.new product: line_item.product, quantity: line_item.quantity do |oli|
+                    = oli.hidden_field :product_id
+                    = oli.hidden_field :quantity
+                  div.row
+                    div.col-xs-4
+                      div.thumbnail
+                        = image_tag line_item.product.primary_image_url(:small)
+                    div.col-xs-8
+                      strong = line_item.product.name
+                      br
+                      = number_to_currency line_item.product.price
+              div.col-md-6
+                - @shipping_methods.each do |shipping_method|
+                  div.form-group
+                    = f.radio_button :shipping_method, shipping_method.id
+                    = f.label shipping_method.label(current_user)
+
+
 
   div.col-md-3
     div.well

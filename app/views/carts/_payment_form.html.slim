@@ -14,6 +14,6 @@
     div.col-xs-6
       = f.input :security_code, input_html: { class: "js-cvc" }, placeholder: "••••"
   div.row
-    div.col-xs-8
-    div.col-xs-4
-      = f.submit "Add Payment Method", class: "btn btn-primary", disable_with: please_with_with_spinner
+    div.col-xs-9
+    div.col-xs-3
+      = f.submit "Add Payment Method", class: "btn btn-primary btn-block", disable_with: please_with_with_spinner

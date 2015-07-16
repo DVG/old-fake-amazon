@@ -10,6 +10,7 @@ class CartsController < ApplicationController
 
   def checkout
     @cart = current_user.cart
+    @shipping_methods = ShippingMethod.options_for_user(current_user)
   end
 
 end

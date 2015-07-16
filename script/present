@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd presentation
+docker run -v $PWD:/usr/share/nginx/html:ro -p 80:80 nginx

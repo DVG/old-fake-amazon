@@ -2,10 +2,7 @@ class OrdersController < ApplicationController
   def create
     cart = current_user.cart
     @order = Order.create(order_params)
-    cart.line_items.each do |li|
-      @order.order_line_items.create product: li.product, quantity: li.quantity
-      li.destroy
-    end
+    cart.line_items.update_all(cart_id: nil, order_id: @order.id)
     redirect_to confirmation_order_path(@order)
   end
 
@@ -17,6 +14,6 @@ class OrdersController < ApplicationController
 private
 
   def order_params
-    params.require(:order).permit(:shipping_method)
+    params.require(:order).permit(:shipping_method_id)
   end
 end

@@ -2,7 +2,7 @@
 #
 # Table name: shipping_methods
 #
-#  id             :integer
+#  identifier     :integer          primary key
 #  name           :string
 #  price_per_item :decimal(8, 2)
 #  created_at     :datetime         not null

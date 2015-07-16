@@ -48,7 +48,8 @@ div.row
                 - @shipping_methods.each do |ship|
                   div.form-group#shipping_options
                     = f.radio_button :shipping_method_id, ship.identifier, data: { id: ship.identifier }
-                    |  #{shipping_cost_label ship.shipping_cost(current_user)} #{ship.label}
+                    span.shipping-option
+                      |  #{shipping_cost_label ship.shipping_cost(current_user)} #{ship.label}
 
 
 

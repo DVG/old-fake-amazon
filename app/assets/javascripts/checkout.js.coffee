@@ -3,7 +3,7 @@ $ ->
   $('input.js-expiration').payment('formatCardExpiry')
   $('input.js-cvc').payment('formatCardCVC')
 
-  $('input:radio[name="order[shipping_method]"]').on "change", ->
+  $('input:radio[name="order[shipping_method_id]"]').on "change", ->
     $('#order_summary').html('<i class="fa fa-spinner fa-spin"></i>')
     $.ajax '/carts/shipping_cost',
       data:

@@ -1,0 +1,15 @@
+div.row
+  div.col-md-12
+    div.alert.alert-info
+      h2 Thank you!
+      br
+      strong Your order has been submitted. We'll email you when it's shipped.
+
+div.row
+  div.col-md-12
+    - if @recommended.any?
+      h4 Interested in any of this stuff?
+      br
+      - @recommended.each do |product|
+        = render "products/product", product: product
+

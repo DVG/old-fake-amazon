@@ -50,9 +50,18 @@ ActiveRecord::Schema.define(version: 20150716020012) do
   add_index "order_line_items", ["product_id"], name: "index_order_line_items_on_product_id"
 
   create_table "orders", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "shipping_method_id"
+    t.integer  "payment_method_id"
+    t.integer  "shipping_address_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
+
+  add_index "orders", ["payment_method_id"], name: "index_orders_on_payment_method_id"
+  add_index "orders", ["shipping_address_id"], name: "index_orders_on_shipping_address_id"
+  add_index "orders", ["shipping_method_id"], name: "index_orders_on_shipping_method_id"
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "payment_methods", force: :cascade do |t|
     t.integer  "user_id"
@@ -96,7 +105,7 @@ ActiveRecord::Schema.define(version: 20150716020012) do
   add_index "shipping_addresses", ["user_id"], name: "index_shipping_addresses_on_user_id"
 
   create_table "shipping_methods", id: false, force: :cascade do |t|
-    t.integer  "id"
+    t.integer  "identifier"
     t.string   "name"
     t.decimal  "price_per_item", precision: 8, scale: 2
     t.datetime "created_at",                             null: false

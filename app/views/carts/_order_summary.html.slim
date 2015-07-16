@@ -1,0 +1,7 @@
+- shipping_cost = shipping_method.present? ? shipping_method.price_per_item * cart.total_items : 0
+| Items: #{number_to_currency cart.subtotal}
+br
+| Shipping and Handling: #{shipping_cost}
+hr
+strong Total:  
+= number_to_currency(cart.subtotal + shipping_cost)

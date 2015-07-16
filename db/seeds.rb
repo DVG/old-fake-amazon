@@ -24,11 +24,11 @@ disgaea = Product.find_or_create_by name: "Disgaea 3: Absence of Detention", lis
 upload_image "disgaea_3_001.jpg", product: disgaea
 
 puts "====> Creating Shipping Methods"
-ShippingMethod.find_or_create_by id: ShippingMethod::STANDARD_SHIPPING, name: "Standard Shipping", price_per_item: 5.99
-ShippingMethod.find_or_create_by id: ShippingMethod::SUPER_SAVER_SHIPPING, name: "FREE Super Saver Shipping", price_per_item: 0
-ShippingMethod.find_or_create_by id: ShippingMethod::PRIME_TWO_DAY, name: "FREE Prime 2-Day Shipping", price_per_item: 0
-ShippingMethod.find_or_create_by id: ShippingMethod::PRIME_ONE_DAY, name: "$3.99 Prime Overnight Shipping", price_per_item: 3.99
-ShippingMethod.find_or_create_by id: ShippingMethod::PRIME_NO_RUSH, name: "FREE No-Rush Shipping", price_per_item: 0
+ShippingMethod.find_or_create_by identifier: ShippingMethod::STANDARD_SHIPPING, name: "Standard Shipping", price_per_item: 5.99
+ShippingMethod.find_or_create_by identifier: ShippingMethod::SUPER_SAVER_SHIPPING, name: "FREE Super Saver Shipping", price_per_item: 0
+ShippingMethod.find_or_create_by identifier: ShippingMethod::PRIME_TWO_DAY, name: "FREE Prime 2-Day Shipping", price_per_item: 0
+ShippingMethod.find_or_create_by identifier: ShippingMethod::PRIME_ONE_DAY, name: "$3.99 Prime Overnight Shipping", price_per_item: 3.99
+ShippingMethod.find_or_create_by identifier: ShippingMethod::PRIME_NO_RUSH, name: "FREE No-Rush Shipping", price_per_item: 0
 
 puts "====> Creating Default User"
 bradley = User.find_or_initialize_by(email: "bradley.temple@gmail.com", username: "DVG")

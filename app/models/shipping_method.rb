@@ -10,6 +10,7 @@
 #
 
 class ShippingMethod < ActiveRecord::Base
+  self.primary_key = "identifier"
   STANDARD_SHIPPING = 1
   SUPER_SAVER_SHIPPING = 2
   PRIME_TWO_DAY = 3
@@ -22,16 +23,16 @@ class ShippingMethod < ActiveRecord::Base
 
   def self.options_for_user(user)
     if user.prime_member?
-      self.where(id: PRIME_DELIVERY_OPTIONS)
+      self.where(identifier: PRIME_DELIVERY_OPTIONS)
     elsif user.cart.subtotal > 35
-      self.where(id: OVER_35_DELIVERY_OPTIONS)
+      self.where(identifier: OVER_35_DELIVERY_OPTIONS)
     else
-      self.where(id: STANDARD_DELIVERY_OPTIONS)
+      self.where(identifier: STANDARD_DELIVERY_OPTIONS)
     end
   end
 
-  def label(user)
-    case self
+  def label
+    case self.identifier
     when STANDARD_SHIPPING then "Standard USPS Parcel Post (3-5 Business Days)"
     when SUPER_SAVER_SHIPPING then "Super Saver Shipping (3-5 Business Days)"
     when PRIME_TWO_DAY then "Prime Two Day Shipping"

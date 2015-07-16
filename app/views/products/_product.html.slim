@@ -1,0 +1,25 @@
+  div.row
+    div.col-md-3
+      div.thumbnail
+        = image_tag product.product_images.first.image_url(:thumb)
+    div.col-md-9
+      div.row
+        div.col-md-12
+          h1 = link_to product.name, product
+      div.row
+        div.col-sm-3
+          strong List Price
+        div.col-sm-9
+          span.strikethrough
+            = number_to_currency product.list_price
+      div.row
+        div.col-sm-3
+          strong Price
+        div.col-sm-9
+          = number_to_currency product.price
+      div.row
+        div.col-sm-3
+          strong You Save
+        div.col-sm-9
+          = number_to_currency product.list_price_difference
+          = " (#{product.percentage_saved}%)"

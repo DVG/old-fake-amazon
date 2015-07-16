@@ -20,4 +20,12 @@ module ApplicationHelper
     def please_with_with_spinner
       content_tag :i, class: "fa fa-spinner fa-spin"
     end
+
+    def shipping_cost_label(cost)
+      if cost == 0
+        "FREE"
+      else
+        number_to_currency cost
+      end
+    end
 end

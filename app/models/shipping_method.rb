@@ -12,13 +12,14 @@
 class ShippingMethod < ActiveRecord::Base
   self.primary_key = "identifier"
   STANDARD_SHIPPING = 1
-  SUPER_SAVER_SHIPPING = 2
-  PRIME_TWO_DAY = 3
-  PRIME_ONE_DAY = 4
-  PRIME_NO_RUSH = 5
+  RUSH_SHIPPING = 2
+  SUPER_SAVER_SHIPPING = 3
+  PRIME_TWO_DAY = 4
+  PRIME_ONE_DAY = 5
+  PRIME_NO_RUSH = 6
 
   STANDARD_DELIVERY_OPTIONS = [STANDARD_SHIPPING]
-  OVER_35_DELIVERY_OPTIONS = [STANDARD_SHIPPING, SUPER_SAVER_SHIPPING]
+  OVER_35_DELIVERY_OPTIONS = [RUSH_SHIPPING, SUPER_SAVER_SHIPPING]
   PRIME_DELIVERY_OPTIONS = [PRIME_TWO_DAY, PRIME_ONE_DAY, PRIME_NO_RUSH]
 
   def self.options_for_user(user)
@@ -38,6 +39,7 @@ class ShippingMethod < ActiveRecord::Base
     when PRIME_TWO_DAY then "Prime Two Day Shipping"
     when PRIME_ONE_DAY then "Prime Next Day Delivery"
     when PRIME_NO_RUSH then "Prime No Rush Shipping (5-7 Business Days). Get $1 Digital Product Credit!"
+    when RUSH_SHIPPING then "Rush Shipping (1-2 Business Days)"
     end
   end
 

@@ -18,13 +18,14 @@ Feature: Shipping Options
     When I checkout
     Then I should only have the option for standard shipping
 
+  @focus
   Scenario: Standard and FREE Super-Saver Shipping on Orders over $35
     Given I am logged in as a regular user
     And I have a cart with 1 product worth $36
     When I checkout
     Then I should have the following shipping options:
-      | $5.99 Standard USPS Parcel Post (3-5 Business Days) |
-      | FREE Super Saver Shipping (3-5 Business Days)       |
+      | $5.99 Rush Shipping (1-2 Business Days)       |  
+      | FREE Super Saver Shipping (3-5 Business Days) |  
 
 
   Scenario Outline: Shipping Options for Prime Customers

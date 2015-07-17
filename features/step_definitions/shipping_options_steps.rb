@@ -3,7 +3,7 @@ Given(/^I have a cart with 1 product worth \$(\d+)$/) do |price|
 end
 
 When(/^I checkout$/) do
-  visit "/carts/1/checkout"
+  @app.navigate_to :checkout_page\
 end
 
 Then(/^I should only have the option for standard shipping$/) do

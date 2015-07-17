@@ -25,6 +25,7 @@ group :development, :test do
   gem 'spring-commands-cucumber'
   gem 'watir-webdriver'
   gem 'selenium-webdriver'
+  gem 'poltergeist'
 end
 
 group :test do

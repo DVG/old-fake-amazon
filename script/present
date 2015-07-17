@@ -1,4 +1,3 @@
 #!/bin/sh
 
-cd presentation
-docker run -v $PWD:/usr/share/nginx/html:ro -p 80:80 nginx
+docker run -v $PWD/presentation:/usr/share/nginx/html:ro -p 80:80 nginx

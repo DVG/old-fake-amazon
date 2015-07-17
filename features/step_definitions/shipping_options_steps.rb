@@ -7,9 +7,14 @@ When(/^I checkout$/) do
 end
 
 Then(/^I should only have the option for standard shipping$/) do
-  expect(page.all("span.shipping-option").map(&:text)).to include "$5.99 Standard USPS Parcel Post (3-5 Business Days)"
+  @app.on(:checkout_page) do |page|
+    expect(page).to have_only_standard_shipping_option
+  end
+
 end
 
-Then(/^I should have the following shipping options:$/) do |table|
-  expect(page.all("span.shipping-option").map(&:text)).to eq table.raw.flatten
+Then(/^I should have the following shipping options:$/) do |options|
+  @app.on(:checkout_page) do |page|
+    expect(page).to have_shipping_options options
+  end
 end

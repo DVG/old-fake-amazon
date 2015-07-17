@@ -26,6 +26,7 @@ group :development, :test do
   gem 'watir-webdriver'
   gem 'selenium-webdriver'
   gem 'poltergeist'
+  gem 'site_prism'
 end
 
 group :test do

@@ -1,4 +1,4 @@
 #!/bin/sh
 
-bin/rake development:reset
+bin/rake development:reset > /dev/null
 foreman start

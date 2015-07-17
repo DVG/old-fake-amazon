@@ -29,6 +29,6 @@ div.row
             = f.input :quantity, collection: 1..10, input_html: { class: "form-control", id: "quantity" }, include_blank: false
         div.row
           div.col-md-12
-            = button_tag :submit, class: "btn btn-primary btn-block" do
+            = button_tag :submit, class: "btn btn-primary btn-block", id: "add_to_cart" do
               i.fa.fa-shopping-cart
               |  Add to Cart

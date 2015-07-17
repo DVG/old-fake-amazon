@@ -1,21 +1,21 @@
-  div.row
+  div.row.product
     div.col-md-3
       div.thumbnail
         = image_tag product.product_images.first.image_url(:thumb)
     div.col-md-9
-      div.row
+      div.row.product-link
         div.col-md-12
           h1 = link_to product.name, product
-      div.row
+      div.row.list-price
         div.col-sm-3
           strong List Price
         div.col-sm-9
           span.strikethrough
             = number_to_currency product.list_price
-      div.row
+      div.row.price
         div.col-sm-3
           strong Price
-        div.col-sm-9
+        div.col-sm-9.price
           = number_to_currency product.price
       div.row
         div.col-sm-3

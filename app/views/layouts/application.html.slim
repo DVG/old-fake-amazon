@@ -33,7 +33,7 @@ html
                     li
                       = link_to "Register", new_user_registration_path
               li
-                = link_to carts_path
+                = link_to carts_path, id: "shopping-cart"
                   - if cart_items && cart_items > 0
                     i.fa.fa-2x.fa-shopping-cart.notification-badge data-badge="#{cart_items}"
                   - else

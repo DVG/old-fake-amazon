@@ -22,7 +22,7 @@ FactoryGirl.define do
     list_price { price + 2 }
     category
     after(:create) do |product, factory|
-      upload_image("psvita_003.jpg", product: product)
+      upload_image("default_picture.jpg", product: product)
     end
   end
 end

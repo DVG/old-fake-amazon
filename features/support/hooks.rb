@@ -5,4 +5,5 @@ Before do
   ShippingMethod.create identifier: ShippingMethod::PRIME_ONE_DAY, name: "$3.99 Prime Overnight Shipping", price_per_item: 3.99
   ShippingMethod.create identifier: ShippingMethod::PRIME_NO_RUSH, name: "FREE No-Rush Shipping", price_per_item: 0
   @app = App.new
+  page.driver.browser.manage.window.maximize
 end
